@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppTest</string>
+
+    <string name="server_url">http://172.30.1.18:3000</string>
+</resources>
