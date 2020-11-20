@@ -20,7 +20,7 @@ import com.example.apptest.service.AccountListService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MainActivity extends AppCompatActivity {
+public class APITestActivity extends AppCompatActivity {
     TextView textView;
     Button btn;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_api_test);
 
         textView = findViewById(R.id.textView);
         btn = findViewById(R.id.button);
