@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AppTest</string>
-
     <string name="server_url">http://172.30.1.18:3000</string>
+    <string name="api_url">https://testapi.openbanking.or.kr</string>
+    <string name="apiKey">NWK57GvwptnbK5U7UW8vx74tvM9nFh1SqGKSWver</string>
+    <string name="apiSecret">PAB8ov8OChnsFGFMatYh3YP0B8FHsr6Ndy0QGoeg</string>
 </resources>
