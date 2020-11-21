@@ -11,5 +11,6 @@ public interface AccountListService {
     String BASE_URL = "https://testapi.openbanking.or.kr";
 
     @GET("/v2.0/user/me")
-    Call<AccountInfo> fetchAccountInfo(@Header("Authorization") String token, @Query("user_seq_no") int userSeqNo);
+    Call<AccountInfo> fetchAccountInfo(@Header("Authorization") String token,
+                                       @Query("user_seq_no") String userSeqNo);
 }

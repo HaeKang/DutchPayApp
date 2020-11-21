@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Sign.MainActivity"></activity>
+        <activity android:name=".BalanceActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Sign.SignUpActivity" />
         <activity android:name=".Sign.SignInActivity">
             <intent-filter>

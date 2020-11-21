@@ -2,6 +2,7 @@ package com.example.apptest.service;
 
 import com.example.apptest.Data.AccountInfo;
 import com.example.apptest.Data.UserInfo;
+import com.example.apptest.Data.jwtToken;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -16,6 +17,7 @@ public interface UserService {
     String BASE_URL = "http://172.30.1.18:3000";
 
     @FormUrlEncoded
-    @POST("/test_app")
-    Call<UserInfo> fetchUserInfo(@Field("userId") String userId);
+    @POST("/login")
+    Call<jwtToken> fetchUserInfo(@Field("userEmail") String userEmail,
+                                 @Field("userPassword") String userPassword);
 }

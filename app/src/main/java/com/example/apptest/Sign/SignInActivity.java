@@ -8,31 +8,17 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.apptest.Data.UserInfo;
+import com.example.apptest.Data.jwtToken;
+import com.example.apptest.MainActivity;
 import com.example.apptest.R;
-import com.example.apptest.service.AccountListService;
 import com.example.apptest.service.UserService;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 public class SignInActivity extends AppCompatActivity {
@@ -42,6 +28,11 @@ public class SignInActivity extends AppCompatActivity {
     TextView textView;
 
     List<String> args;
+
+    // 토큰 저장을 위해 사용
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +46,8 @@ public class SignInActivity extends AppCompatActivity {
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userId = "해강1";
+                String userEmail = "해강1";
+                String userPassword = "1234";
 
                 textView = findViewById(R.id.IdTextView);
 
@@ -67,23 +59,27 @@ public class SignInActivity extends AppCompatActivity {
 
                 // Node.js 연동
                 UserService service = retrofit.create(UserService.class);
-                service.fetchUserInfo(userId).enqueue(new Callback<UserInfo>() {
+                service.fetchUserInfo(userEmail, userPassword).enqueue(new Callback<jwtToken>() {
                     @Override
-                    public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                        String userAccessToken = response.body().getUserAccessToken();
-                        String userSeqNo = response.body().getUserSeqNo();
+                    public void onResponse(Call<jwtToken> call, Response<jwtToken> response) {
+
+                        String jwtToken = response.body().getJwtToken();
+
+                        textView.setText(jwtToken);
+
+                        sharedPreferences = getSharedPreferences("TokenInfo",MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        editor.putString("jwtToken", jwtToken);
+                        editor.commit();
 
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra("userid", "해강1");
-                        intent.putExtra("userAccessToken", userAccessToken);
-                        intent.putExtra("userSeqNo", userSeqNo);
                         startActivity(intent);
 
                     }
 
                     @Override
-                    public void onFailure(Call<UserInfo> call, Throwable t) {
-
+                    public void onFailure(Call<jwtToken> call, Throwable t) {
+                        textView.setText("실패");
                     }
                 });
 
