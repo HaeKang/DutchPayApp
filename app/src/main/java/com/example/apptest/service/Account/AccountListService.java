@@ -1,6 +1,6 @@
-package com.example.apptest.service;
+package com.example.apptest.service.Account;
 
-import com.example.apptest.Data.AccountInfo;
+import com.example.apptest.Data.Account.AccountInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

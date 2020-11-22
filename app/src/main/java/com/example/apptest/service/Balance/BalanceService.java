@@ -1,6 +1,6 @@
-package com.example.apptest.service;
+package com.example.apptest.service.Balance;
 
-import com.example.apptest.Data.Balance;
+import com.example.apptest.Data.Balance.Balance;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

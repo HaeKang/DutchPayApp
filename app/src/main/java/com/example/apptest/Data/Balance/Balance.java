@@ -1,4 +1,4 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.Balance;
 
 import com.squareup.moshi.Json;
 

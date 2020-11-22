@@ -1,8 +1,6 @@
-package com.example.apptest.service;
+package com.example.apptest.service.Transfer;
 
-import com.example.apptest.Data.Balance;
-import com.example.apptest.Data.Transfer;
-import com.example.apptest.Data.TransferInfo;
+import com.example.apptest.Data.Transfer.TransferInfo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,4 +1,4 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.Transfer;
 
 import com.squareup.moshi.Json;
 

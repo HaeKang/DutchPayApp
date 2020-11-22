@@ -12,11 +12,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.apptest.Data.Transfer;
-import com.example.apptest.Data.TransferInfo;
-import com.example.apptest.Data.UserTokenInfo;
-import com.example.apptest.service.TransferService;
-import com.example.apptest.service.UserTokenService;
+import com.example.apptest.Data.Transfer.Transfer;
+import com.example.apptest.Data.Transfer.TransferInfo;
+import com.example.apptest.Data.User.UserTokenInfo;
+import com.example.apptest.service.Transfer.TransferService;
+import com.example.apptest.service.User.UserTokenService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

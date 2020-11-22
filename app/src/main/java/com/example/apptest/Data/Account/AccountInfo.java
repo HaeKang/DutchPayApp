@@ -1,5 +1,6 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.Account;
 
+import com.example.apptest.Data.Account.Account;
 import com.squareup.moshi.Json;
 
 import java.util.List;

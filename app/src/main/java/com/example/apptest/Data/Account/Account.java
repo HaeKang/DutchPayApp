@@ -1,4 +1,4 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.Account;
 
 import com.squareup.moshi.Json;
 
@@ -37,6 +37,17 @@ public class Account {
     private String accountSeq;
     @Json(name = "account_type")
     private String accountType;
+
+    // 잔액
+    private String balance;
+
+    public String getBalance(){
+        return balance;
+    }
+
+    public void setBalance(String balance){
+        this.balance = balance;
+    }
 
     public String getFintechUseNum() {
         return fintechUseNum;

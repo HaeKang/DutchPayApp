@@ -1,5 +1,6 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.Transfer;
 
+import com.example.apptest.Data.Transfer.Transfer;
 import com.squareup.moshi.Json;
 
 import java.util.List;

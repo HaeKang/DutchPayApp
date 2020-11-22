@@ -14,10 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.apptest.Data.jwtToken;
-import com.example.apptest.MainActivity;
+import com.example.apptest.Data.User.jwtToken;
+import com.example.apptest.Main.MainActivity;
 import com.example.apptest.R;
-import com.example.apptest.service.UserService;
+import com.example.apptest.service.User.UserService;
 
 import java.util.List;
 

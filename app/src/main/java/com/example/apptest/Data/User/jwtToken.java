@@ -1,4 +1,4 @@
-package com.example.apptest.Data;
+package com.example.apptest.Data.User;
 
 public class jwtToken {
     private String jwtToken;
