@@ -1,4 +1,4 @@
-package com.example.apptest;
+package com.example.apptest.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.apptest.Data.Transfer.Transfer;
 import com.example.apptest.Data.Transfer.TransferInfo;
 import com.example.apptest.Data.User.UserTokenInfo;
+import com.example.apptest.R;
 import com.example.apptest.service.Transfer.TransferService;
 import com.example.apptest.service.User.UserTokenService;
 

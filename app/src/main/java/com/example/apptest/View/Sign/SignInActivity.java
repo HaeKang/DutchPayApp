@@ -1,4 +1,4 @@
-package com.example.apptest.Sign;
+package com.example.apptest.View.Sign;
 
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.apptest.Data.User.jwtToken;
-import com.example.apptest.Main.MainActivity;
+import com.example.apptest.View.Main.MainActivity;
 import com.example.apptest.R;
 import com.example.apptest.service.User.UserService;
 

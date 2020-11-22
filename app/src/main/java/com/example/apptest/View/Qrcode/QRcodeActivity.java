@@ -1,4 +1,4 @@
-package com.example.apptest.Qrcode;
+package com.example.apptest.View.Qrcode;
 
 import androidx.appcompat.app.AppCompatActivity;
 

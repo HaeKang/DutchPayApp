@@ -1,6 +1,7 @@
-package com.example.apptest.Main;
+package com.example.apptest.View.Main;
 
-import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.apptest.Data.Account.Account;
 import com.example.apptest.Data.Account.AccountInfo;
@@ -96,7 +97,12 @@ public class MainViewModel extends ViewModel {
                         .stream()
                         .collect(Collectors.toList());
 
+                int for_length = 0;
+
                 for(Account account : items){
+                    // for문 다 돌고 recyclerview에 넣기 위해 사용
+                    for_length++;
+                    int finalFor_length = for_length;
 
                     // 잔액 확인하기
                     String finusenum = account.getFintechUseNum();
@@ -126,6 +132,11 @@ public class MainViewModel extends ViewModel {
                             String balance = response.body().getBalanceAmt();
                             account.setBalance(balance);
 
+                            // 마지막 for문일때
+                            if(finalFor_length == items.size()){
+                                itemLiveData.postValue(items);
+                                loadingLiveData.postValue(false);
+                            }
                         }
 
                         @Override
@@ -135,10 +146,6 @@ public class MainViewModel extends ViewModel {
                     });
                 }
 
-                itemLiveData.postValue(items);
-
-                // 로딩 끝
-                loadingLiveData.postValue(false);
             }
 
             @Override

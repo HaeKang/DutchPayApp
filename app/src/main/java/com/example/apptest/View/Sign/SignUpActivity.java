@@ -1,4 +1,4 @@
-package com.example.apptest.Sign;
+package com.example.apptest.View.Sign;
 
 import androidx.appcompat.app.AppCompatActivity;
 
