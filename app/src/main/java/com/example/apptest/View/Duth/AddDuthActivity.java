@@ -2,6 +2,7 @@ package com.example.apptest.View.Duth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -213,7 +214,9 @@ public class AddDuthActivity extends AppCompatActivity {
         btnFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplication(), SetDuthActivity.class);
+                intent.putExtra("sum", SumTextView.getText().toString());
+                startActivity(intent);
             }
         });
 
