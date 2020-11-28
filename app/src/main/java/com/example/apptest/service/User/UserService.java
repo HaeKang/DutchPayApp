@@ -9,7 +9,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface UserService {
-    String BASE_URL = "http://172.30.1.49:3000";
+    String BASE_URL = "http://172.30.1.30:3000";
 
     @FormUrlEncoded
     @POST("/login")

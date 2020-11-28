@@ -52,18 +52,18 @@ public class SignInActivity extends AppCompatActivity {
                 textView = findViewById(R.id.IdTextView);
 
                 // sql에서 user_id에 해당하는 userAccessToken, userSeqNo 받기
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(UserService.BASE_URL)
-                        .addConverterFactory(MoshiConverterFactory.create())
-                        .build();
+                Retrofit
+                        retrofit = new Retrofit.Builder()
+                                .baseUrl(getString(R.string.server_url))
+                                .addConverterFactory(MoshiConverterFactory.create())
+                                .build();
 
-                // Node.js 연동
-                UserService service = retrofit.create(UserService.class);
-                service.fetchUserInfo(userEmail, userPassword).enqueue(new Callback<jwtToken>() {
-                    @Override
-                    public void onResponse(Call<jwtToken> call, Response<jwtToken> response) {
-
-                        String jwtToken = response.body().getJwtToken();
+                        // Node.js 연동
+                        UserService service = retrofit.create(UserService.class);
+                        service.fetchUserInfo(userEmail, userPassword).enqueue(new Callback<jwtToken>() {
+                            @Override
+                            public void onResponse(Call<jwtToken> call, Response<jwtToken> response) {
+                                String jwtToken = response.body().getJwtToken();
 
                         textView.setText(jwtToken);
 

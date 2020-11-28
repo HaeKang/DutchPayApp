@@ -58,7 +58,7 @@ public class SetDuthAdapter extends RecyclerView.Adapter<SetDuthAdapter.SetDuthV
             holder.item_set_duth_name.setText(person.getName());
         }
 
-        // 체크박스 설정하기 <수정필요>
+        // 체크박스 설정하기
         holder.SetDuthJoinCheck.setOnClickListener(new CheckBox.OnClickListener(){
             @Override
             public void onClick(View view) {

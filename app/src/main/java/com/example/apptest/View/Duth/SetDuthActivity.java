@@ -4,15 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.apptest.Data.Account.Account;
+import com.example.apptest.Data.Dutch.DutchInsertAns;
 import com.example.apptest.R;
+import com.example.apptest.service.Balance.BalanceService;
+import com.example.apptest.service.Dutch.DutchInsert;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +51,8 @@ public class SetDuthActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String sum = intent.getStringExtra("sum");  // 총액
+        String finusernum = intent.getStringExtra("finusernum");
+        String dutchnane = intent.getStringExtra("name");
 
         SumText = findViewById(R.id.SetSumTextView);
         NameText = findViewById(R.id.SetDuthNameTextView);
@@ -56,6 +68,9 @@ public class SetDuthActivity extends AppCompatActivity {
         String nowTime = format.format(time);
         DayText.setText(nowTime);
 
+        // 토큰 정보
+        SharedPreferences sharedPreferences = getSharedPreferences("TokenInfo", MODE_PRIVATE);
+        String jwtToken = sharedPreferences.getString("jwtToken", "");
 
         // recycler view
         RecyclerView duth_recycler_view = findViewById(R.id.duth_recycler_view);
@@ -84,7 +99,43 @@ public class SetDuthActivity extends AppCompatActivity {
         SetFinDuthBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // mysql에 넣음
+                String dutchinfoname = NameText.getText().toString();
+                String personnum = Integer.toString(items.size() + 1);
+                ArrayList<String> personnames = new ArrayList<>();
 
+                for(int i = 0; i<items.size(); i++){
+                    String personname = items.get(i).getName();
+                    personnames.add(personname);
+                    Log.d("test2", personname);
+                }
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(DutchInsert.BASE_URL)
+                        .addConverterFactory(MoshiConverterFactory.create())
+                        .build();
+
+                DutchInsert service = retrofit.create(DutchInsert.class);
+                service.fetchInsertDutch(jwtToken, dutchnane, finusernum, dutchinfoname, sum, personnum, personnames)
+                        .enqueue(new Callback<DutchInsertAns>() {
+                            @Override
+                            public void onResponse(Call<DutchInsertAns> call, Response<DutchInsertAns> response) {
+                                String ans = response.body().getState();
+                                Log.d("test2", ans);
+                                if(ans.equals("error")){
+
+                                } else {
+                                    Intent intent1 = new Intent(getApplicationContext(), DuthActivity.class);
+                                    intent1.putExtra("finusernum", finusernum);
+                                    startActivity(intent1);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<DutchInsertAns> call, Throwable t) {
+
+                            }
+                        });
             }
         });
         

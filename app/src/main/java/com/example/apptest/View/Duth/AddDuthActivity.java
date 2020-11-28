@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.example.apptest.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddDuthActivity extends AppCompatActivity {
 
     Button btn1;
@@ -33,6 +36,8 @@ public class AddDuthActivity extends AppCompatActivity {
     TextView SumTextView;
 
     String history = "";
+
+    String dutchname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,14 @@ public class AddDuthActivity extends AppCompatActivity {
 
         SumTextView = findViewById(R.id.SumTextView);
 
+        Intent intent = getIntent();
+        String finusernum = intent.getStringExtra("finusernum");
+
+        // 오늘 날짜
+        Date time = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String nowTime = format.format(time);
+        dutchname = nowTime + " 더치페이";
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +229,8 @@ public class AddDuthActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(), SetDuthActivity.class);
                 intent.putExtra("sum", SumTextView.getText().toString());
+                intent.putExtra("finusernum", finusernum);
+                intent.putExtra("name", dutchname);
                 startActivity(intent);
             }
         });
