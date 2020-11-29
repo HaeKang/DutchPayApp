@@ -11,32 +11,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".View.Duth.AddDuthActivity"
-            android:theme="@style/popupTheme"
-            android:screenOrientation="portrait">
-
-        </activity>
+        <activity android:name=".View.WithdrawActivity"></activity>
+        <activity
+            android:name=".View.Duth.AddDuthActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme"></activity>
         <activity android:name=".View.Duth.SetDuthActivity" />
         <activity
             android:name=".View.Duth.DuthActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name=".View.Qrcode.ScanQRActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
         <activity android:name=".View.Qrcode.QRcodeActivity" />
-
-
         <activity android:name=".View.BalanceActivity" />
-
-
         <activity android:name=".View.Main.MainActivity" />
-
-
         <activity android:name=".View.Sign.SignUpActivity" />
         <activity android:name=".View.Sign.SignInActivity">
             <intent-filter>

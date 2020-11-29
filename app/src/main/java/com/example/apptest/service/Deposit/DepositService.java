@@ -15,7 +15,6 @@ public interface DepositService {
     @FormUrlEncoded
     @POST("/v2.0/transfer/deposit/fin_num")
     Call<DepositInfo> fetchDeposit(@Header("Authorization") String token,
-                                   @Header("Content-Type") String type,
                                    @Field("cntr_account_type") String cntr_account_type,
                                    @Field("cntr_account_num") String cntr_account_num,
                                    @Field("wd_pass_phrase") String wd_pass_phrase,

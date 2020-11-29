@@ -19,12 +19,18 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public class PayListViewModel extends ViewModel {
 
     public String jwtToken;
+    public String finnum;
 
     public MutableLiveData<List<MyPayListData>> itemLiveData = new MutableLiveData<>();
 
     // jwtToken
     public void setJwtToken(String jwtToken){
         this.jwtToken = jwtToken;
+    }
+
+    // finnum
+    public void setFinnum(String finnum){
+        this.finnum = finnum;
     }
 
     public void getPayList(){
@@ -38,6 +44,9 @@ public class PayListViewModel extends ViewModel {
             @Override
             public void onResponse(Call<List<MyPayListData>> call, Response<List<MyPayListData>> response) {
                 List<MyPayListData> items = response.body();
+                for(MyPayListData item : items){
+                    item.setMyfinnum(finnum);
+                }
                 itemLiveData.postValue(items);
                 Log.d("test2", "지불해야하는 목록 성공");
             }

@@ -52,8 +52,7 @@ public class SignInActivity extends AppCompatActivity {
                 textView = findViewById(R.id.IdTextView);
 
                 // sql에서 user_id에 해당하는 userAccessToken, userSeqNo 받기
-                Retrofit
-                        retrofit = new Retrofit.Builder()
+                Retrofit retrofit = new Retrofit.Builder()
                                 .baseUrl(getString(R.string.server_url))
                                 .addConverterFactory(MoshiConverterFactory.create())
                                 .build();

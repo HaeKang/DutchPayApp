@@ -111,6 +111,7 @@ public class DuthActivity extends AppCompatActivity {
 
         viewModelPay = new ViewModelProvider(this).get(PayListViewModel.class);
         viewModelPay.setJwtToken(jwtToken);
+        viewModelPay.setFinnum(finusernum);
         viewModelPay.getPayList();
         viewModelPay.itemLiveData.observe(this, PayLists -> {
             PayAdapter.updateItems(PayLists);

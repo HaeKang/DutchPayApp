@@ -14,6 +14,8 @@ import com.example.apptest.R;
 import com.example.apptest.View.BalanceActivity;
 import com.example.apptest.View.Duth.DuthActivity;
 import com.example.apptest.View.Qrcode.QRcodeActivity;
+import com.example.apptest.View.Qrcode.ScanQRActivity;
+import com.google.zxing.qrcode.QRCodeReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,12 +65,12 @@ class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountViewHold
         holder.AccountFinText.setText(account.getFintechUseNum());
         holder.AccountBalanceText.setText("잔액 : " + account.getBalance());
 
-        // 거래내역 버튼 클릭
+        // QR리더기 버튼 클릭
         holder.AccountTransBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent intent = new Intent(view.getContext(), BalanceActivity.class);
+                Intent intent = new Intent(view.getContext(), ScanQRActivity.class);
                 intent.putExtra("finusernum", account.getFintechUseNum());
                 context.startActivity(intent);
             }

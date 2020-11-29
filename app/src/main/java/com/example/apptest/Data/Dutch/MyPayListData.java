@@ -5,6 +5,15 @@ public class MyPayListData {
     String finnum;
     int money;
     int person;
+    String myfinnum;
+
+    public String getMyfinnum() {
+        return myfinnum;
+    }
+
+    public void setMyfinnum(String myfinnum) {
+        this.myfinnum = myfinnum;
+    }
 
     public void setFinnum(String finnum) {
         this.finnum = finnum;
